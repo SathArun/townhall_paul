@@ -1,0 +1,77 @@
+.answer-tile {
+  width: 100%;
+  min-height: 64px;
+  padding: 16px 20px;
+  border-radius: var(--radius-tile);
+  background: var(--card);
+  border: 2px solid transparent;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: left;
+  transition: all 150ms ease;
+  will-change: transform;
+}
+
+.answer-tile:hover:not(.revealed):not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevated);
+  border-color: var(--accent);
+}
+
+.answer-tile:active:not(.revealed) {
+  animation: pulse 200ms ease;
+}
+
+.answer-tile.selected {
+  border-color: var(--accent);
+  background: rgba(0, 122, 255, 0.06);
+  color: var(--accent);
+}
+
+.answer-tile.revealed {
+  cursor: default;
+  pointer-events: none;
+}
+
+.answer-tile.correct {
+  background: var(--success);
+  border-color: var(--success);
+  color: white;
+  font-weight: 600;
+}
+
+.answer-tile.wrong {
+  background: var(--error);
+  border-color: var(--error);
+  color: white;
+  font-weight: 600;
+  animation: shake 400ms ease;
+}
+
+.tile-label {
+  flex: 1;
+}
+
+.tile-icon {
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+@keyframes shake {
+  0%,  100% { transform: translateX(0); }
+  20%,  60% { transform: translateX(-8px); }
+  40%,  80% { transform: translateX(8px); }
+}
+
+@keyframes pulse {
+  0%,  100% { transform: scale(1); }
+  50%        { transform: scale(1.02); }
+}
